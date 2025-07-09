@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meta Ta'lim - Tez Kunda</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #04AA6D 0%, #FFA629 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 60px 40px;
+            max-width: 800px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #04AA6D, #FFA629);
+        }
+
+        .logo {
+            width:600px;
+            height: 300px;
+            border-radius: 20px;
+            margin: 0 auto 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+            font-weight: bold;
+            color: white;
+            box-shadow: 0 10px 30px rgba(170, 194, 185, 0.3);
+        }
+
+        .title {
+            font-size: 30px;
+            font-weight: 700;
+            color: #fb9f008a;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #04AA6D, #FFA629);
+            -webkit-background-clip: text;
+            /* -webkit-text-fill-color: transparent; */
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 24px;
+            color: #7f8c8d;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        .preview-content {
+            margin-bottom: 50px;
+            padding: 30px;
+            background: linear-gradient(135deg, #ffffff, #ffffff);
+            border-radius: 15px;
+            border-left: 4px solid #04AA6D;
+        }
+
+        .preview-content h3 {
+            color: #2c3e50;
+            font-size: 20px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .preview-content p {
+            color: #5a6c7d;
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        .contact-section {
+            margin-top: 40px;
+        }
+
+        .contact-title {
+            font-size: 20px;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #34495e;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e6ed;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #04AA6D;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(4, 170, 109, 0.1);
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #04AA6D, #FFA629);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(4, 170, 109, 0.3);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(4, 170, 109, 0.4);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .success-message {
+            display: none;
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            border: 1px solid #c3e6cb;
+        }
+
+        .error-message {
+            display: none;
+            background: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            border: 1px solid #f5c6cb;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .feature-title {
+            color: #2c3e50;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .feature-desc {
+            color: #7f8c8d;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 20px;
+            }
+            
+            .title {
+                font-size: 32px;
+            }
+            
+            .subtitle {
+                font-size: 20px;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- <div class="logo">MT</div>
+        <h1 class="title">Meta Ta'lim</h1> -->
+        <div style=" background-image: url(./3D\ learn\ \(5\).png); " class="logo"></div>
+        <p class="subtitle">Tez Kunda...</p>
+        
+        <div class="preview-content">
+            <h3>🚀 Zamonaviy Ta'lim Platformasi</h3>
+            <p>Meta Ta'lim - bu innovatsion ta'lim platformasi bo'lib, zamonaviy texnologiyalar yordamida sifatli ta'lim xizmatlarini taqdim etadi. Bizning platformamiz orqali siz eng so'nggi bilimlar va ko'nikmalarni osongina o'rganishingiz mumkin.</p>
+        </div>
+
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">📚</div>
+                <div class="feature-title">Sifatli Kurslar</div>
+                <div class="feature-desc">Mutaxassislar tomonidan tayyorlangan kurslar</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <div class="feature-title">Interaktiv O'rganish</div>
+                <div class="feature-desc">Zamonaviy o'rganish metodlari va amaliyotlar</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🏆</div>
+                <div class="feature-title">Sertifikatlar</div>
+                <div class="feature-desc">Kurslarni muvaffaqiyatli yakunlash sertifikatlari</div>
+            </div>
+        </div>
+
+        <div class="contact-section">
+            <h2 class="contact-title">Savollaringiz bo'lsa yoki taklifingiz bo'lsa, yozib qoldiring</h2>
+            
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">Ismingiz *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Xabar yoki taklif *</label>
+                    <textarea id="message" name="message" placeholder="Sizning savolingiz yoki taklifingizni yozing..." required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Xabar Yuborish</button>
+            </form>
+            
+            <div id="successMessage" class="success-message">
+                ✅ Xabaringiz muvaffaqiyatli yuborildi! Tez orada siz bilan bog'lanamiz.
+            </div>
+            
+            <div id="errorMessage" class="error-message">
+                ❌ Xabar yuborishda xatolik yuz berdi. Iltimos qayta urinib ko'ring.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const name = formData.get('name');
+            const message = formData.get('message');
+            
+            // Email body yaratish
+            const emailBody = `
+Meta Ta'lim saytidan yangi xabar:
+
+Ism: ${name}
+
+Xabar:
+${message}
+
+---
+Yuborilgan vaqt: ${new Date().toLocaleString('uz-UZ')}
+            `.trim();
+            
+            // Gmail kompozer linkini yaratish
+            const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=muminova.2m@gmail.com&su=${encodeURIComponent('Meta Ta\'lim - Yangi xabar')}&body=${encodeURIComponent(emailBody)}`;
+            
+            // Linkni yangi oynada ochish
+            window.open(gmailUrl, '_blank');
+            
+            // Success message ko'rsatish
+            document.getElementById('successMessage').style.display = 'block';
+            document.getElementById('errorMessage').style.display = 'none';
+            
+            // Formani tozalash
+            this.reset();
+            
+            // Success message 5 soniyadan so'ng yashirish
+            setTimeout(() => {
+                document.getElementById('successMessage').style.display = 'none';
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
