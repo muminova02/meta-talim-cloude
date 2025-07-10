@@ -45,17 +45,28 @@
         }
 
         .logo {
-            width:600px;
-            height: 300px;
-            border-radius: 20px;
-            margin: 0 auto 30px;
             display: flex;
             align-items: center;
             justify-content: center;
-            
-            font-weight: bold;
-            color: white;
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            min-height: 180px;
+            margin: 0 auto 30px;
+            border-radius: 20px;
+            background: #fff;
             box-shadow: 0 10px 30px rgba(170, 194, 185, 0.3);
+            overflow: hidden;
+            padding: 0;
+        }
+
+        .logo-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 20px;
+            object-fit: contain;
+            background: #fff;
         }
 
         .title {
@@ -250,9 +261,16 @@
 
         @media (max-width: 768px) {
             .container {
-                padding: 40px 20px;
+                padding: 40px 10px;
             }
-            
+            .logo {
+                max-width: 100%;
+                min-height: 120px;
+                height: auto;
+            }
+            .logo-img {
+                max-height: 160px;
+            }
             .title {
                 font-size: 32px;
             }
@@ -271,7 +289,9 @@
     <div class="container">
         <!-- <div class="logo">MT</div>
         <h1 class="title">Meta Ta'lim</h1> -->
-        <div style=" background-image: url(./3D\ learn\ \(5\).png); " class="logo"></div>
+        <div class="logo">
+            <img src="./3D learn (5).png" alt="Meta Ta'lim Logo" class="logo-img" />
+        </div>
         <p class="subtitle">Tez Kunda...</p>
         
         <div class="preview-content">
