@@ -23,7 +23,7 @@ const Testimonials = () => {
       name: "Malika Karimova",
       role: "Kimyo o'qituvchisi",
       content: "VR muhitida kimyoviy reaksiyalarni ko'rsatish imkoniyati o'quvchilar uchun xavfsiz va samarali. Tavsiya qilaman!",
-      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face"
+      image: "/images/teacher2.jpg"
     }
   ];
 
