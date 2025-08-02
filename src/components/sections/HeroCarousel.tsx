@@ -4,6 +4,8 @@ import { ChevronLeft, ChevronRight, Download } from "lucide-react";
 import { Button } from "../ui/button";
 import SolarSystemModel from "../../../public/models/SolarSystemModel";
 import { SearchIcon } from "lucide-react";
+import dLearn from "../../../dist/images/3D learn (2) (2).png";
+import vr1 from "../../../dist/images/3D learn (3).png";
 
 interface CarouselSlide {
   id: number;
@@ -151,7 +153,7 @@ const HeroCarousel = () => {
         return (
           <div className="relative" style={{ width: "500px", height: "500px" }}>
             <img
-              src="/images/vr.jpg"
+              src={dLearn}
               alt=""
               srcSet=""
               className="w-full h-full"
@@ -162,7 +164,7 @@ const HeroCarousel = () => {
         return (
           <div className="relative" style={{ width: "500px", height: "500px" }}>
             <img
-              src="/images/vr1.png"
+              src={vr1}
               alt=""
               srcSet=""
               className="w-full h-full"
@@ -206,27 +208,6 @@ const HeroCarousel = () => {
       <div className="container mx-auto px-6 z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
-
-          {/* Right Visual */}
-          <motion.div
-            key={`visual-${currentSlide}`}
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="relative flex items-center justify-center"
-          >
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentSlide}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.8 }}
-                transition={{ duration: 0.5 }}
-              >
-                {renderVisual(slides[currentSlide].visual)}
-              </motion.div>
-            </AnimatePresence>
-          </motion.div>
 
           <motion.div
             key={currentSlide}
@@ -284,6 +265,28 @@ const HeroCarousel = () => {
               </Button>
             </motion.div>
           </motion.div>
+          {/* Right Visual */}
+          <motion.div
+            key={`visual-${currentSlide}`}
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="relative flex items-center justify-center"
+          >
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentSlide}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+                transition={{ duration: 0.5 }}
+              >
+                {renderVisual(slides[currentSlide].visual)}
+              </motion.div>
+            </AnimatePresence>
+          </motion.div>
+
+
         </div>
 
         {/* Navigation Controls */}
@@ -303,8 +306,8 @@ const HeroCarousel = () => {
                 key={index}
                 onClick={() => goToSlide(index)}
                 className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentSlide
-                    ? "bg-emerald-500 w-8"
-                    : "bg-emerald-200 hover:bg-emerald-300"
+                  ? "bg-emerald-500 w-8"
+                  : "bg-emerald-200 hover:bg-emerald-300"
                   }`}
                 onMouseEnter={() => setIsAutoPlaying(false)}
                 onMouseLeave={() => setIsAutoPlaying(true)}

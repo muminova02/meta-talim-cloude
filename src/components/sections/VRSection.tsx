@@ -1,7 +1,10 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-
+import cambridgeLogo from '../../../dist/images/9b00521e8faa0dd379e56acc8fb5fe2f82ddcc2a.png';
+import DavUni from '../../../dist/images/a073130993b0163d18714d0e66e77ae0e899b995.png';
+import mitUni from '../../../dist/images/d5be4c2b5036e2ab856ffae6a87b01b09343d46b.png';
+import harvardUni from '../../../dist/images/dd627cd8adf9a621279af04eb1c041c00e13bcfb.png'
 const VRSection: React.FC = () => {
   return (
     <section className="py-16 bg-gradient-to-br from-blue-50 to-cyan-100 relative overflow-hidden">
@@ -43,7 +46,7 @@ const VRSection: React.FC = () => {
                   <div className="w-20 h-20 bg-gradient-to-br from-purple-400 to-blue-500 rounded-full"></div>
                 </div>
               </div>
-              
+
               {/* Floating Elements */}
               <div className="absolute top-4 left-8 w-16 h-12 bg-blue-200 rounded-lg transform rotate-12"></div>
               <div className="absolute top-8 right-4 w-12 h-8 bg-purple-200 rounded-lg transform -rotate-12"></div>
@@ -68,7 +71,7 @@ const VRSection: React.FC = () => {
                   <div className="w-20 h-20 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full"></div>
                 </div>
               </div>
-              
+
               {/* Floating UI Elements */}
               <div className="absolute top-6 right-8 w-8 h-8 bg-red-400 rounded-full flex items-center justify-center">
                 <span className="text-white text-xs">❤️</span>
@@ -116,23 +119,24 @@ const VRSection: React.FC = () => {
           </p>
 
           {/* University Logos */}
-          <div className="flex flex-wrap justify-center items-center gap-8 opacity-70">
-            <div className="w-16 h-16 bg-red-600 rounded flex items-center justify-center">
-              <span className="text-white font-bold text-xs">CAMBRIDGE</span>
+          <div className="flex justify-between items-center flex-wrap gap-8 w-full px-4">
+            <div className="w-28 h-25 flex items-center justify-center">
+              <img src={cambridgeLogo} alt="Cambridge Logo" className="object-contain h-full" />
             </div>
-            <div className="w-16 h-16 bg-red-600 rounded flex items-center justify-center">
-              <span className="text-white font-bold text-xs">MIT</span>
+            <div className="w-28 h-20 flex items-center justify-center">
+              <img src={mitUni} alt="MIT Logo" className="object-contain h-full" />
             </div>
-            <div className="w-16 h-16 bg-red-800 rounded flex items-center justify-center">
-              <span className="text-white font-bold text-xs">HARVARD</span>
+            <div className="w-28 h-20 flex items-center justify-center">
+              <img src={harvardUni} alt="Harvard Logo" className="object-contain h-full" />
             </div>
-            <div className="w-16 h-16 bg-yellow-600 rounded flex items-center justify-center">
-              <span className="text-white font-bold text-xs">UCL</span>
+            <div className="w-28 h-20 flex items-center justify-center">
+              <img src={DavUni} alt="DavUni Logo" className="object-contain h-full" />
             </div>
-            <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center">
-              <span className="text-white font-bold text-xs">GLOBAL</span>
+            <div className="w-28 h-20 flex items-center justify-center">
+              <img src={mitUni} alt="Global Logo" className="object-contain h-full" />
             </div>
           </div>
+
         </motion.div>
       </div>
     </section>

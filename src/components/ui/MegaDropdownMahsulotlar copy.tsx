@@ -16,12 +16,12 @@ const MegaDropdownMahsulotlar: React.FC<MegaDropdownMahsulotlarProps> = ({ isOpe
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -10 }}
       transition={{ duration: 0.2 }}
-      className="absolute top-full left-1/2 -translate-x-1/2 w-screen max-w-5xl bg-white shadow-lg border-t-4 border-emerald-500 z-50 rounded-lg"
+      className="absolute top-full left-1/2 -translate-x-1/2 w-screen max-w-4xl bg-white shadow-lg border-t-4 border-emerald-500 z-50 rounded-lg"
     >
       <div className="flex">
         {/* Left Section - Green Background */}
         <div className="w-72 bg-gradient-to-br from-emerald-400 to-emerald-500 p-6 rounded-l-lg">
-          <h3 className="text-white font-bold text-lg mb-4">Bizning ishlanmalarimiz fazil o'zingiz ko'ring</h3>
+          <h3 className="text-white font-bold text-lg mb-4">Bizning ishlanmal arimiz fazil o'zingiz ko'ring</h3>
           
           <div className="space-y-4">
             {/* Media */}
