@@ -19,7 +19,7 @@ const MegaDropdownMahsulotlar: React.FC<MegaDropdownMahsulotlarProps> = ({ isOpe
       className="fixed left-0 right-0 top-16 z-50 flex items-start justify-center"
       style={{ width: '100vw', left: 0, right: 0 }}
     >
-      <div className="flex w-full"
+      <div className="flex w-max-2xl"
       style={{
         display: 'flex',
         alignItems: 'flex-start',

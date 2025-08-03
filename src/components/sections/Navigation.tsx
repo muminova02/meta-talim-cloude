@@ -18,7 +18,7 @@ const Navigation = () => {
 
   useEffect(() => {
     const checkIsMobile = () => {
-      setIsMobile(window.innerWidth < 1024) 
+      setIsMobile(window.innerWidth < 1024)
     }
     checkIsMobile()
     window.addEventListener("resize", checkIsMobile)
@@ -61,21 +61,40 @@ const Navigation = () => {
     },
   ]
 
+  // Close all dropdowns except the specified one
+  const closeOtherDropdowns = (excludeSetter) => {
+    const allSetters = [
+      setIsMaktabDropdownOpen,
+      setIsMahsulotlarDropdownOpen,
+      setIsUniversitetDropdownOpen,
+      setIsOqituvchilarDropdownOpen,
+      setIsYordamDropdownOpen,
+    ]
+    allSetters.forEach((setter) => {
+      if (setter !== excludeSetter) setter(false)
+    })
+  }
+
   // Generic dropdown handlers
-  const createDropdownHandlers = (setDropdownOpen: (value: boolean) => void, currentState: boolean) => ({
+  const createDropdownHandlers = (setDropdownOpen, currentState) => ({
     onMouseEnter: () => {
       if (!isMobile) {
         setDropdownOpen(true)
+        closeOtherDropdowns(setDropdownOpen)
       }
     },
     onMouseLeave: () => {
       if (!isMobile) {
-        setDropdownOpen(false)
+        // Do not close on mouse leave for Maktab and Mahsulotlar
+        if (setDropdownOpen !== setIsMaktabDropdownOpen && setDropdownOpen !== setIsMahsulotlarDropdownOpen) {
+          setDropdownOpen(false)
+        }
       }
     },
     onClick: () => {
       if (isMobile) {
         setDropdownOpen(!currentState)
+        closeOtherDropdowns(setDropdownOpen)
       }
     },
   })
@@ -94,14 +113,6 @@ const Navigation = () => {
     buttonText,
     items,
     title,
-  }: {
-    isOpen: boolean
-    onMouseEnter: () => void
-    onMouseLeave: () => void
-    onClick: () => void
-    buttonText: string
-    items: { label: string; href: string }[]
-    title: string
   }) => (
     <div className="relative" onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
       <Button
@@ -124,7 +135,6 @@ const Navigation = () => {
               setIsYordamDropdownOpen(false)
             }}
           />
-
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -139,6 +149,7 @@ const Navigation = () => {
                   key={index}
                   href={item.href}
                   className="block px-4 py-2 text-gray-700 hover:bg-emerald-50 hover:text-emerald-700 transition-colors duration-200"
+                  onClick={() => closeOtherDropdowns(null)}
                 >
                   {item.label}
                 </a>
@@ -184,15 +195,16 @@ const Navigation = () => {
                 <ChevronDown className="h-4 w-4" />
               </Button>
 
-              {/* Overlay for closing dropdown on click outside */}
               {isMaktabDropdownOpen && (
-                <div
-                  className="fixed inset-0 bg-gray-900 bg-opacity-70 z-40 pointer-events-auto"
-                  style={{ top: "64px" }}
-                  onClick={() => setIsMaktabDropdownOpen(false)}
-                />
+                <>
+                  <div
+                    className="fixed inset-0 bg-gray-900 bg-opacity-70 z-40 pointer-events-auto"
+                    style={{ top: "64px" }}
+                    onClick={() => closeOtherDropdowns(null)}
+                  />
+                  <MegaDropdown2 isOpen={isMaktabDropdownOpen} />
+                </>
               )}
-              <MegaDropdown2 isOpen={isMaktabDropdownOpen} />
             </div>
 
             {/* Universitet dropdown */}
@@ -232,15 +244,16 @@ const Navigation = () => {
                 <ChevronDown className="h-4 w-4" />
               </Button>
 
-              {/* Overlay for closing dropdown on click outside */}
               {isMahsulotlarDropdownOpen && (
-                <div
-                  className="fixed inset-0 bg-gray-900 bg-opacity-70 z-40 pointer-events-auto"
-                  style={{ top: "64px" }}
-                  onClick={() => setIsMahsulotlarDropdownOpen(false)}
-                />
+                <>
+                  <div
+                    className="fixed inset-0 bg-gray-900 bg-opacity-70 z-40 pointer-events-auto"
+                    style={{ top: "64px" }}
+                    onClick={() => closeOtherDropdowns(null)}
+                  />
+                  <MegaDropdownMahsulotlar isOpen={isMahsulotlarDropdownOpen} />
+                </>
               )}
-              <MegaDropdownMahsulotlar isOpen={isMahsulotlarDropdownOpen} />
             </div>
 
             {/* Yordam dropdown */}
@@ -300,7 +313,10 @@ const Navigation = () => {
               <div className="space-y-2">
                 <button
                   className="text-white font-medium py-2 border-b border-emerald-400 w-full text-left flex items-center justify-between"
-                  onClick={() => setIsMaktabDropdownOpen(!isMaktabDropdownOpen)}
+                  onClick={() => {
+                    setIsMaktabDropdownOpen(!isMaktabDropdownOpen)
+                    closeOtherDropdowns(setIsMaktabDropdownOpen)
+                  }}
                 >
                   Maktab
                   <ChevronDown
@@ -334,7 +350,10 @@ const Navigation = () => {
               <div className="space-y-2">
                 <button
                   className="text-white font-medium py-2 border-b border-emerald-400 w-full text-left flex items-center justify-between"
-                  onClick={() => setIsMahsulotlarDropdownOpen(!isMahsulotlarDropdownOpen)}
+                  onClick={() => {
+                    setIsMahsulotlarDropdownOpen(!isMahsulotlarDropdownOpen)
+                    closeOtherDropdowns(setIsMahsulotlarDropdownOpen)
+                  }}
                 >
                   Mahsulotlar
                   <ChevronDown
