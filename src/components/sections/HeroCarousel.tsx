@@ -1,18 +1,20 @@
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight, Download } from "lucide-react";
-import { Button } from "../ui/button";
-import SolarSystemModel from "../../../public/models/SolarSystemModel";
-import { SearchIcon } from "lucide-react";
+"use client"
+
+import { useState, useEffect } from "react"
+import { motion, AnimatePresence } from "framer-motion"
+import { ChevronLeft, ChevronRight } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { SearchIcon } from "lucide-react"
 import dLearn from "../../../dist/images/3D learn (2) (2).png";
 import vr1 from "../../../dist/images/3D learn (3).png";
+import vr2 from "../../../dist/images/EFFORT (1).png";
 
 interface CarouselSlide {
-  id: number;
-  title: string;
-  description: string;
-  buttonText: string;
-  visual: "meta-talim" | "vr-elements" | "3d-animations" | "3d-elements";
+  id: number
+  title: string
+  description: string
+  buttonText: string
+  visual: "meta-talim" | "vr-elements" | "3d-animations" | "3d-elements"
 }
 
 const slides: CarouselSlide[] = [
@@ -43,39 +45,37 @@ const slides: CarouselSlide[] = [
   },
   {
     id: 4,
-    title: "3D Elementlar Bilan Chuqurroq O'rganing",
+    title: "3D Animatsiyalar Bilan Chuqurroq O'rganing",
     description:
       "Kengaytirilgan reallik (AR) yordamida dunyongizga turli elementlar, 3D masalalarni joylashtiring. Minglab resurslarni kashf eting, va hoziroq telefon qurilmangizda sinab ko'ring.",
     buttonText: "Boshlash",
     visual: "3d-elements",
   },
-];
+]
 
 const HeroCarousel = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [currentSlide, setCurrentSlide] = useState(0)
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true)
 
   useEffect(() => {
-    if (!isAutoPlaying) return;
-
+    if (!isAutoPlaying) return
     const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 12000);
-
-    return () => clearInterval(interval);
-  }, [isAutoPlaying]);
+      setCurrentSlide((prev) => (prev + 1) % slides.length)
+    }, 12000)
+    return () => clearInterval(interval)
+  }, [isAutoPlaying])
 
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length);
-  };
+    setCurrentSlide((prev) => (prev + 1) % slides.length)
+  }
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-  };
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length)
+  }
 
   const goToSlide = (index: number) => {
-    setCurrentSlide(index);
-  };
+    setCurrentSlide(index)
+  }
 
   const renderVisual = (visual: string) => {
     switch (visual) {
@@ -88,7 +88,7 @@ const HeroCarousel = () => {
               }}
               transition={{
                 duration: 20,
-                repeat: Infinity,
+                repeat: Number.POSITIVE_INFINITY,
                 ease: "linear",
               }}
               className="w-64 h-64 lg:w-80 lg:h-80 border-4 border-orange-400 rounded-full flex items-center justify-center relative"
@@ -99,35 +99,33 @@ const HeroCarousel = () => {
                 }}
                 transition={{
                   duration: 20,
-                  repeat: Infinity,
+                  repeat: Number.POSITIVE_INFINITY,
                   ease: "linear",
                 }}
                 className="text-6xl lg:text-8xl font-bold text-orange-400"
               >
                 3D
               </motion.div>
-
               <motion.div
                 animate={{
                   y: [-10, 10, -10],
                 }}
                 transition={{
                   duration: 3,
-                  repeat: Infinity,
+                  repeat: Number.POSITIVE_INFINITY,
                   ease: "easeInOut",
                 }}
                 className="absolute -top-8 -right-8 w-16 h-16 bg-emerald-400 rounded-lg shadow-lg flex items-center justify-center text-white font-bold"
               >
                 AR
               </motion.div>
-
               <motion.div
                 animate={{
                   y: [10, -10, 10],
                 }}
                 transition={{
                   duration: 3,
-                  repeat: Infinity,
+                  repeat: Number.POSITIVE_INFINITY,
                   ease: "easeInOut",
                   delay: 1.5,
                 }}
@@ -137,49 +135,101 @@ const HeroCarousel = () => {
               </motion.div>
             </motion.div>
           </div>
-        );
+        )
       case "vr-elements":
         return (
           <div className="relative" style={{ width: "500px", height: "500px" }}>
-            <img
-              src="/images/vr1.png"
-              alt=""
-              srcSet=""
-              className="w-full h-full"
-            />
+            <img src={vr1} alt="VR Elements" className="w-full h-full object-cover rounded-lg" />
           </div>
-        );
+        )
       case "3d-animations":
         return (
           <div className="relative" style={{ width: "500px", height: "500px" }}>
-            <img
-              src={dLearn}
-              alt=""
-              srcSet=""
-              className="w-full h-full"
-            />
+            <img src={dLearn} alt="3D Learning" className="w-full h-full object-cover rounded-lg" />
           </div>
-        );
+        )
       case "3d-elements":
         return (
-          <div className="relative" style={{ width: "500px", height: "500px" }}>
-            <img
-              src={vr1}
-              alt=""
-              srcSet=""
-              className="w-full h-full"
-            />
+          <div className="grid grid-cols-5 items-center gap-6 px-6 py-10 w-full h-full">
+            {/* Chap qism - 3 ustun */}
+            <div className="col-span-3 flex flex-col items-start justify-center">
+              {/* Rasm */}
+              <div className="w-full h-96 rounded-lg overflow-hidden mb-6">
+                <img
+                  src={vr2}
+                  alt="3D Animatsiya"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+
+              {/* Matnlar */}
+              <h3 className="text-emerald-600 text-4xl font-bold leading-snug mb-4 text-center">
+                3D Animatsiyalar Bilan Chuqurroq O’rganing
+              </h3>
+              <p className="text-gray-600 text-base leading-relaxed text-center">
+                Kengaytirilgan reallik (AR) yordamida dunyoyngizga turli elementlar, 3D
+                moslamalarni joylashtiring. Minglab resurslarni kashf eting, va hoziroq
+                telefon qurilmangizda sinab ko’ring.
+              </p>
+            </div>
+
+            {/* O'ng qism - 2 ustun */}
+            <div className="col-span-2 flex flex-col items-center justify-center gap-6">
+              {/* 3D Icon */}
+              <div className="w-20 h-20 bg-blue-500 rounded-xl shadow-lg flex items-center justify-center">
+                <svg
+                  width="36"
+                  height="36"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="text-white"
+                >
+                  <path
+                    d="M12 2L2 7L12 12L22 7L12 2Z"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M2 17L12 22L22 17"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M2 12L12 17L22 12"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </div>
+
+              {/* Ko'proq tugmasi */}
+              <Button
+                size="lg"
+                className="bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-2 rounded-full text-sm font-medium shadow-lg flex items-center gap-2 mt-28"
+              >
+                Ko'proq...
+                <SearchIcon className="h-4 w-4" />
+              </Button>
+            </div>
           </div>
         );
-      default:
-        return null;
+      
+        default:
+        return null
     }
-  };
+  }
 
   return (
     <section className="relative min-h-screen lg:min-h-[118vh] flex items-center justify-center bg-gradient-to-br from-emerald-50 to-white overflow-hidden mt-[-10vh] pb-28 ">
       <div
-        className="absolute inset-0"
+       className="absolute inset-0"
         style={{
           backgroundImage: "url('/images/hero_back.png')",
           backgroundSize: "cover",
@@ -187,6 +237,7 @@ const HeroCarousel = () => {
           zIndex: 0,
           opacity: 0.9,
         }}
+
       />
 
       {/* Background Elements */}
@@ -206,127 +257,145 @@ const HeroCarousel = () => {
       </div>
 
       <div className="container mx-auto px-6 z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Content */}
-
-          <motion.div
-            key={currentSlide}
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center lg:text-left"
-          >
-            <motion.h1 className="text-3xl lg:text-5xl font-bold mb-6 bg-gradient-to-r from-emerald-600 to-emerald-800 bg-clip-text text-transparent leading-tight">
-              {slides[currentSlide].title}
-            </motion.h1>
-
-            <motion.p className="text-lg text-gray-600 mb-8 leading-relaxed">
-              {slides[currentSlide].description}
-            </motion.p>
-
-            <motion.div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Button
-                size="lg"
-                className="bg-emerald-500 hover:bg-emerald-600 text-white px-5 py-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
-              >
-                {slides[currentSlide].buttonText}
-                {slides[currentSlide].buttonText === "Ko'proq..." ? (
-                  <SearchIcon className="ml-2 h-5 w-5" />
-                ) : (
-                  <svg
-                    style={{
-                      width: "30px",
-                      height: "35px",
-                      flexShrink: "0",
-                      aspectRatio: "1/1",
-                      marginLeft: "3px",
-                      marginTop: "3px",
-                    }}
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 50 50"
-                    fill="none"
-                  >
-                    <path
-                      d="M23.2375 3L39.475 12.375V28.7188C39.475 29.4501 39.2824 30.1686 38.9167 30.802C38.551 31.4354 38.0251 31.9614 37.3917 32.3271L25.3208 39.2979C24.6874 39.6636 23.9689 39.8561 23.2375 39.8561C22.5061 39.8561 21.7876 39.6636 21.1542 39.2979L9.08333 32.3271C8.44994 31.9614 7.92395 31.4354 7.55825 30.802C7.19255 30.1686 7.00002 29.4501 7 28.7188V12.375L23.2375 3Z"
-                      stroke="white"
-                      stroke-width="3"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                    <path
-                      d="M23.2376 11.3334V21.75M23.2376 21.75L14.2168 26.9584M23.2376 21.75L32.2585 26.9584"
-                      stroke="white"
-                      stroke-width="3"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
-                )}
-              </Button>
+        {currentSlide === 3 ? (
+          // Fourth slide - only visual content centered
+          <div className="flex items-center justify-center min-h-[60vh]">
+            <motion.div
+              key={`visual-${currentSlide}`}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8 }}
+              className="relative flex items-center justify-center"
+            >
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentSlide}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.8 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  {renderVisual(slides[currentSlide].visual)}
+                </motion.div>
+              </AnimatePresence>
             </motion.div>
-          </motion.div>
-          {/* Right Visual */}
-          <motion.div
-            key={`visual-${currentSlide}`}
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="relative flex items-center justify-center"
-          >
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentSlide}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.8 }}
-                transition={{ duration: 0.5 }}
-              >
-                {renderVisual(slides[currentSlide].visual)}
-              </motion.div>
-            </AnimatePresence>
-          </motion.div>
-
-
-        </div>
-
-        {/* Navigation Controls */}
-        <div className="absolute bottom-44 left-1/2 transform -translate-x-1/2 flex items-center gap-4">
-          <button
-            onClick={prevSlide}
-            className="p-2 rounded-full bg-white/80 hover:bg-white shadow-lg transition-all duration-300"
-            onMouseEnter={() => setIsAutoPlaying(false)}
-            onMouseLeave={() => setIsAutoPlaying(true)}
-          >
-            <ChevronLeft className="w-5 h-5 text-emerald-600" />
-          </button>
-
-          <div className="flex gap-2">
-            {slides.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => goToSlide(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentSlide
-                  ? "bg-emerald-500 w-8"
-                  : "bg-emerald-200 hover:bg-emerald-300"
-                  }`}
-                onMouseEnter={() => setIsAutoPlaying(false)}
-                onMouseLeave={() => setIsAutoPlaying(true)}
-              />
-            ))}
           </div>
+        ) : (
+          // First three slides - two column layout
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left Content */}
+            <motion.div
+              key={currentSlide}
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-center lg:text-left"
+            >
+              <motion.h1 className="text-3xl lg:text-5xl font-bold mb-6 bg-gradient-to-r from-emerald-600 to-emerald-800 bg-clip-text text-transparent leading-tight">
+                {slides[currentSlide].title}
+              </motion.h1>
+              <motion.p className="text-lg text-gray-600 mb-8 leading-relaxed">
+                {slides[currentSlide].description}
+              </motion.p>
+              <motion.div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                <Button
+                  size="lg"
+                  className="bg-emerald-500 hover:bg-emerald-600 text-white px-5 py-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                >
+                  {slides[currentSlide].buttonText}
+                  {slides[currentSlide].buttonText === "Ko'proq..." ? (
+                    <SearchIcon className="ml-2 h-5 w-5" />
+                  ) : (
+                    <svg
+                      style={{
+                        width: "30px",
+                        height: "35px",
+                        flexShrink: "0",
+                        aspectRatio: "1/1",
+                        marginLeft: "3px",
+                        marginTop: "3px",
+                      }}
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 50 50"
+                      fill="none"
+                    >
+                      <path
+                        d="M23.2375 3L39.475 12.375V28.7188C39.475 29.4501 39.2824 30.1686 38.9167 30.802C38.551 31.4354 38.0251 31.9614 37.3917 32.3271L25.3208 39.2979C24.6874 39.6636 23.9689 39.8561 23.2375 39.8561C22.5061 39.8561 21.7876 39.6636 21.1542 39.2979L9.08333 32.3271C8.44994 31.9614 7.92395 31.4354 7.55825 30.802C7.19255 30.1686 7.00002 29.4501 7 28.7188V12.375L23.2375 3Z"
+                        stroke="white"
+                        strokeWidth="3"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                      <path
+                        d="M23.2376 11.3334V21.75M23.2376 21.75L14.2168 26.9584M23.2376 21.75L32.2585 26.9584"
+                        stroke="white"
+                        strokeWidth="3"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  )}
+                </Button>
+              </motion.div>
+            </motion.div>
 
-          <button
-            onClick={nextSlide}
-            className="p-2 rounded-full bg-white/80 hover:bg-white shadow-lg transition-all duration-300"
-            onMouseEnter={() => setIsAutoPlaying(false)}
-            onMouseLeave={() => setIsAutoPlaying(true)}
-          >
-            <ChevronRight className="w-5 h-5 text-emerald-600" />
-          </button>
+            {/* Right Visual */}
+            <motion.div
+              key={`visual-${currentSlide}`}
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              className="relative flex items-center justify-center"
+            >
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentSlide}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.8 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  {renderVisual(slides[currentSlide].visual)}
+                </motion.div>
+              </AnimatePresence>
+            </motion.div>
+          </div>
+        )}
+      </div>
+
+      {/* Navigation Controls */}
+      <div className="absolute bottom-44 left-1/2 transform -translate-x-1/2 flex items-center gap-4">
+        <button
+          onClick={prevSlide}
+          className="p-2 rounded-full bg-white/80 hover:bg-white shadow-lg transition-all duration-300"
+          onMouseEnter={() => setIsAutoPlaying(false)}
+          onMouseLeave={() => setIsAutoPlaying(true)}
+        >
+          <ChevronLeft className="w-5 h-5 text-emerald-600" />
+        </button>
+        <div className="flex gap-2">
+          {slides.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => goToSlide(index)}
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentSlide ? "bg-emerald-500 w-8" : "bg-emerald-200 hover:bg-emerald-300"
+                }`}
+              onMouseEnter={() => setIsAutoPlaying(false)}
+              onMouseLeave={() => setIsAutoPlaying(true)}
+            />
+          ))}
         </div>
+        <button
+          onClick={nextSlide}
+          className="p-2 rounded-full bg-white/80 hover:bg-white shadow-lg transition-all duration-300"
+          onMouseEnter={() => setIsAutoPlaying(false)}
+          onMouseLeave={() => setIsAutoPlaying(true)}
+        >
+          <ChevronRight className="w-5 h-5 text-emerald-600" />
+        </button>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default HeroCarousel;
+export default HeroCarousel
