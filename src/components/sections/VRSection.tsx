@@ -1,10 +1,9 @@
-
-import React from 'react';
-import { motion } from 'framer-motion';
-import cambridgeLogo from '../../../dist/images/9b00521e8faa0dd379e56acc8fb5fe2f82ddcc2a.png';
-import DavUni from '../../../dist/images/a073130993b0163d18714d0e66e77ae0e899b995.png';
-import mitUni from '../../../dist/images/d5be4c2b5036e2ab856ffae6a87b01b09343d46b.png';
-import harvardUni from '../../../dist/images/dd627cd8adf9a621279af04eb1c041c00e13bcfb.png'
+import React from "react";
+import { motion } from "framer-motion";
+import cambridgeLogo from "../../../dist/images/9b00521e8faa0dd379e56acc8fb5fe2f82ddcc2a.png";
+import DavUni from "../../../dist/images/a073130993b0163d18714d0e66e77ae0e899b995.png";
+import mitUni from "../../../dist/images/d5be4c2b5036e2ab856ffae6a87b01b09343d46b.png";
+import harvardUni from "../../../dist/images/dd627cd8adf9a621279af04eb1c041c00e13bcfb.png";
 const VRSection: React.FC = () => {
   return (
     <section className="py-16 bg-gradient-to-br from-blue-50 to-cyan-100 relative overflow-hidden">
@@ -20,13 +19,19 @@ const VRSection: React.FC = () => {
             className="space-y-6"
           >
             <h2 className="text-4xl font-bold text-emerald-600 leading-tight">
-              VR dars va Laboratoriya<br />
+              VR dars va Laboratoriya
+              <br />
               amaliy mashg'ulotlar
             </h2>
             <p className="text-gray-700 text-lg leading-relaxed">
-              Real resurslar juda ham qimmat, biz<br />
-              bunga virtual yechim berish orqali, turli<br />
-              <span className="font-semibold text-emerald-600">VR darslar va Virtual Laboratoriyalar</span><br />
+              Real resurslar juda ham qimmat, biz
+              <br />
+              bunga virtual yechim berish orqali, turli
+              <br />
+              <span className="font-semibold text-emerald-600">
+                VR darslar va Virtual Laboratoriyalar
+              </span>
+              <br />
               taklif qilamiz
             </p>
           </motion.div>
@@ -95,7 +100,8 @@ const VRSection: React.FC = () => {
               Tez kunda Vr sinf
             </h3>
             <p className="text-gray-700 text-lg">
-              Maksus ishlab chiqiligan VR sinf ko'z<br />
+              Maksus ishlab chiqiligan VR sinf ko'z
+              <br />
               oynaklari, va VR muhit taklif
             </p>
           </motion.div>
@@ -110,33 +116,93 @@ const VRSection: React.FC = () => {
           className="text-center"
         >
           <h2 className="text-3xl font-bold mb-4">
-            <span className="text-emerald-600">100 dan ortiq Tashkilotlar</span><br />
+            <span className="text-emerald-600">100 dan ortiq Tashkilotlar</span>
+            <br />
             <span className="text-blue-600">tomonidan ishoniladi</span>
           </h2>
           <p className="text-gray-600 mb-12 max-w-2xl mx-auto">
-            jumladan, yuqori sifatli dasturiy ta'minotni yetkazib berish uchun Meta Ta'lim<br />
+            jumladan, yuqori sifatli dasturiy ta'minotni yetkazib berish uchun
+            Meta Ta'lim
+            <br />
             90 dan ortiq top 100 talitka kiruvchi Universitetlar
           </p>
 
-          {/* University Logos */}
-          <div className="flex justify-between items-center flex-wrap gap-8 w-full px-4">
-            <div className="w-28 h-25 flex items-center justify-center">
-              <img src={cambridgeLogo} alt="Cambridge Logo" className="object-contain h-full" />
-            </div>
-            <div className="w-28 h-20 flex items-center justify-center">
-              <img src={mitUni} alt="MIT Logo" className="object-contain h-full" />
-            </div>
-            <div className="w-28 h-20 flex items-center justify-center">
-              <img src={harvardUni} alt="Harvard Logo" className="object-contain h-full" />
-            </div>
-            <div className="w-28 h-20 flex items-center justify-center">
-              <img src={DavUni} alt="DavUni Logo" className="object-contain h-full" />
-            </div>
-            <div className="w-28 h-20 flex items-center justify-center">
-              <img src={mitUni} alt="Global Logo" className="object-contain h-full" />
+          {/* University Logos Carousel */}
+          <div className="relative w-full">
+            <div className="flex animate-scroll space-x-16 w-max">
+              <div className="w-28 h-25 flex items-center justify-center flex-shrink-0">
+                <img
+                  src={cambridgeLogo}
+                  alt="Cambridge Logo"
+                  className="object-contain h-full"
+                />
+              </div>
+              <div className="w-28 h-20 flex items-center justify-center flex-shrink-0">
+                <img
+                  src={mitUni}
+                  alt="MIT Logo"
+                  className="object-contain h-full"
+                />
+              </div>
+              <div className="w-28 h-20 flex items-center justify-center flex-shrink-0">
+                <img
+                  src={harvardUni}
+                  alt="Harvard Logo"
+                  className="object-contain h-full"
+                />
+              </div>
+              <div className="w-28 h-20 flex items-center justify-center flex-shrink-0">
+                <img
+                  src={DavUni}
+                  alt="DavUni Logo"
+                  className="object-contain h-full"
+                />
+              </div>
+              <div className="w-28 h-20 flex items-center justify-center flex-shrink-0">
+                <img
+                  src={mitUni}
+                  alt="Global Logo"
+                  className="object-contain h-full"
+                />
+              </div>
+              {/* Duplicate logos for seamless loop */}
+              <div className="w-28 h-25 flex items-center justify-center flex-shrink-0">
+                <img
+                  src={cambridgeLogo}
+                  alt="Cambridge Logo"
+                  className="object-contain h-full"
+                />
+              </div>
+              <div className="w-28 h-20 flex items-center justify-center flex-shrink-0">
+                <img
+                  src={mitUni}
+                  alt="MIT Logo"
+                  className="object-contain h-full"
+                />
+              </div>
+              <div className="w-28 h-20 flex items-center justify-center flex-shrink-0">
+                <img
+                  src={harvardUni}
+                  alt="Harvard Logo"
+                  className="object-contain h-full"
+                />
+              </div>
+              <div className="w-28 h-20 flex items-center justify-center flex-shrink-0">
+                <img
+                  src={DavUni}
+                  alt="DavUni Logo"
+                  className="object-contain h-full"
+                />
+              </div>
+              <div className="w-28 h-20 flex items-center justify-center flex-shrink-0">
+                <img
+                  src={mitUni}
+                  alt="Global Logo"
+                  className="object-contain h-full"
+                />
+              </div>
             </div>
           </div>
-
         </motion.div>
       </div>
     </section>

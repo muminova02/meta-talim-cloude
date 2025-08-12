@@ -172,7 +172,7 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-16">
           <motion.div className="flex items-center" whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}>
             <img
-              src="public/images/meta-talim-logo.png"
+              src="/images/meta-talim-logo.png"
               alt="Meta Ta'lim Logo"
               className="h-40 w-40 object-contain"
             />
