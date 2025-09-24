@@ -20,9 +20,9 @@ interface CarouselSlide {
 const slides: CarouselSlide[] = [
   {
     id: 1,
-    title: "Meta Ta'lim - Zamonaviy Ta'lim Platformasi",
+    title: "Musavvir Edu - Zamonaviy Ta'lim Platformasi",
     description:
-      "Meta Ta'lim orqali 3D animatsiya va interaktiv media bilan fanlarni chuqurroq o'rganing. Laboratoriya mashg'ulotlari, VR va AR texnologiyalari yordamida bilimlaringizni kengaytiring",
+      "Musavvir Edu orqali 3D animatsiya va interaktiv media bilan fanlarni chuqurroq o'rganing. Laboratoriya mashg'ulotlari, VR va AR texnologiyalari yordamida bilimlaringizni kengaytiring",
     buttonText: "Ko'proq...",
     visual: "meta-talim",
   },

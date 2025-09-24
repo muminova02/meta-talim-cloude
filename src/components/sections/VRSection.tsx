@@ -122,7 +122,7 @@ const VRSection: React.FC = () => {
           </h2>
           <p className="text-gray-600 mb-12 max-w-2xl mx-auto">
             jumladan, yuqori sifatli dasturiy ta'minotni yetkazib berish uchun
-            Meta Ta'lim
+            Musavvir Edu
             <br />
             90 dan ortiq top 100 talitka kiruvchi Universitetlar
           </p>

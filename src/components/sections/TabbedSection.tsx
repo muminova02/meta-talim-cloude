@@ -1,12 +1,11 @@
-
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import TabHeader from '../ui/TabHeader';
-import TabPanel from '../ui/TabPanel';
-import Tab1Content from './tabs/Tab1Content';
-import Tab2Content from './tabs/Tab2Content';
-import Tab3Content from './tabs/Tab3Content';
-import { GraduationCap, Users, Building } from 'lucide-react';
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import TabHeader from "../ui/TabHeader";
+import TabPanel from "../ui/TabPanel";
+import Tab1Content from "./tabs/Tab1Content";
+import Tab2Content from "./tabs/Tab2Content";
+import Tab3Content from "./tabs/Tab3Content";
+import { GraduationCap, Users, Building } from "lucide-react";
 
 const TabbedSection: React.FC = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -17,27 +16,30 @@ const TabbedSection: React.FC = () => {
     {
       subject: "O'quvchilar",
       title: "Darsingizni samarali o'ting, Qolganini bizga qo'yib bering",
-      description: "Biz bilan hamkorlik qiling, Darslarni yanada Qiziqarliroq va Samaralinoq o'ting. Kelajak bilan uchish ->",
+      description:
+        "Biz bilan hamkorlik qiling, Darslarni yanada Qiziqarliroq va Samaralinoq o'ting. Kelajak bilan uchish ->",
       buttonText: "Koʻproq...",
       icon: <GraduationCap className="w-8 h-8 text-emerald-600" />,
-      content: <Tab1Content />
+      content: <Tab1Content />,
     },
     {
       subject: "O'qituvchilar",
       title: "O'qituvchilar uchun zamonaviy vositalar",
-      description: "Eng mashxur ustozlar Meta Ta'lim qurilmalaridan foydalangan holda keraksiz Vaqt va Kuch sarflashdan saqlandilar. Yuqori nargiza ->",
+      description:
+        "Eng mashxur ustozlar Musavvir Edu qurilmalaridan foydalangan holda keraksiz Vaqt va Kuch sarflashdan saqlandilar. Yuqori nargiza ->",
       buttonText: "Batafsil",
       icon: <Users className="w-8 h-8 text-emerald-600" />,
-      content: <Tab2Content />
+      content: <Tab2Content />,
     },
     {
       subject: "Tashkilotlar",
       title: "Tashkilotlar uchun keng imkoniyatlar",
-      description: "Maktab va universitetlar uchun to'liq ta'lim ekotizimi. Barcha jarayonlarni boshqaring va samaradorlikni oshiring.",
+      description:
+        "Maktab va universitetlar uchun to'liq ta'lim ekotizimi. Barcha jarayonlarni boshqaring va samaradorlikni oshiring.",
       buttonText: "Konsultatsiya",
       icon: <Building className="w-8 h-8 text-emerald-600" />,
-      content: <Tab3Content />
-    }
+      content: <Tab3Content />,
+    },
   ];
 
   const handleButtonClick = (tabIndex: number) => {
