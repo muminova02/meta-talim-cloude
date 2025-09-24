@@ -1,33 +1,39 @@
-
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Facebook, Instagram, Youtube } from 'lucide-react';
-import { Button } from '../ui/button';
-import { Input } from '../ui/input';
+import React from "react";
+import { motion } from "framer-motion";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Facebook,
+  Instagram,
+  Youtube,
+} from "lucide-react";
+import { Button } from "../ui/button";
+import { Input } from "../ui/input";
 
 const Footer = () => {
   const socialLinks = [
-    { icon: Facebook, href: '#', label: 'Facebook' },
-    { icon: Instagram, href: '#', label: 'Instagram' },
-    { icon: Youtube, href: '#', label: 'YouTube' }
+    { icon: Facebook, href: "#", label: "Facebook" },
+    { icon: Instagram, href: "#", label: "Instagram" },
+    { icon: Youtube, href: "#", label: "YouTube" },
   ];
 
   const serviceLinks = [
-    { name: 'Illustrations', href: '#' },
-    { name: 'Mobile Design', href: '#' },
-    { name: 'Motion Graphic', href: '#' },
-    { name: 'Web Design', href: '#' },
-    { name: 'Development', href: '#' },
-    { name: 'SEO', href: '#' }
+    { name: "Illustrations", href: "#" },
+    { name: "Mobile Design", href: "#" },
+    { name: "Motion Graphic", href: "#" },
+    { name: "Web Design", href: "#" },
+    { name: "Development", href: "#" },
+    { name: "SEO", href: "#" },
   ];
 
   const companyLinks = [
-    { name: 'Service', href: '#' },
-    { name: 'Features', href: '#' },
-    { name: 'Our Team', href: '#' },
-    { name: 'Portfolio', href: '#' },
-    { name: 'Blog', href: '#' },
-    { name: 'Contact Us', href: '#' }
+    { name: "Service", href: "#" },
+    { name: "Features", href: "#" },
+    { name: "Our Team", href: "#" },
+    { name: "Portfolio", href: "#" },
+    { name: "Blog", href: "#" },
+    { name: "Contact Us", href: "#" },
   ];
 
   return (
@@ -46,18 +52,16 @@ const Footer = () => {
               <div className="w-8 h-8 bg-emerald-500 rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-sm">M</span>
               </div>
-              <h3 className="text-xl font-bold text-gray-800">
-                META TA'LIM
-              </h3>
+              <h3 className="text-xl font-bold text-gray-800">Musavvir Edu</h3>
             </div>
             <p className="text-gray-600 mb-6 text-sm leading-relaxed">
               CEO/Founder: Muqaddas
             </p>
-            
+
             <p className="text-gray-500 text-sm mb-6">
-              Copyright © 2025 Meta Ta'lim
+              Copyright © 2025 Musavvir Edu
             </p>
-            
+
             <p className="text-gray-500 text-xs">
               Autorlik huquqlari ega. 2025 Fevral
             </p>
@@ -121,23 +125,15 @@ const Footer = () => {
             <h4 className="text-lg font-semibold mb-6 text-gray-800">
               Join a Newsletter
             </h4>
-            
+
             <div className="space-y-4 mb-6">
-              <Input
-                type="email"
-                placeholder="Your Email"
-                className="w-full"
-              />
-              <Input
-                type="text"
-                placeholder="Your Name"
-                className="w-full"
-              />
+              <Input type="email" placeholder="Your Email" className="w-full" />
+              <Input type="text" placeholder="Your Name" className="w-full" />
               <Button className="w-full bg-emerald-500 hover:bg-emerald-600">
                 Subscribe
               </Button>
             </div>
-            
+
             <div className="flex gap-3">
               {socialLinks.map((social, index) => (
                 <motion.a
@@ -168,12 +164,12 @@ const Footer = () => {
               <MapPin className="h-4 w-4 text-emerald-500" />
               <span>Amir Temur ko'chasi, 10-uy</span>
             </div>
-            
+
             <div className="flex items-center gap-2">
               <Mail className="h-4 w-4 text-emerald-500" />
               <span>muminova.2m@gmail.com</span>
             </div>
-            
+
             <div className="flex items-center gap-2">
               <Phone className="h-4 w-4 text-emerald-500" />
               <span>+998(94) 546-18-12</span>

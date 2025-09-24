@@ -1,8 +1,13 @@
-
-import React from 'react';
-import { motion, rgba } from 'framer-motion';
-import { QrCode, Circle, CircleArrowRight, ScanQrCode, Gift } from 'lucide-react';
-import { Button } from '../ui/button';
+import React from "react";
+import { motion, rgba } from "framer-motion";
+import {
+  QrCode,
+  Circle,
+  CircleArrowRight,
+  ScanQrCode,
+  Gift,
+} from "lucide-react";
+import { Button } from "../ui/button";
 
 const QRCodeSection = () => {
   return (
@@ -19,13 +24,15 @@ const QRCodeSection = () => {
           <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
             <div className="flex-1">
               <h2 className="text-4xl lg:text-5xl font-bold text-emerald-600 mb-6">
-                Meta Ta'lim QR&Code
+                Musavvir Edu QR&Code
               </h2>
-              
+
               <div className="flex flex-wrap gap-4 mb-8">
                 <div className="flex items-center gap-2 text-emerald-600">
                   <QrCode className="h-5 w-5" />
-                  <span className="text-sm font-medium">Skanerlash yoki code generatsiya</span>
+                  <span className="text-sm font-medium">
+                    Skanerlash yoki code generatsiya
+                  </span>
                 </div>
                 <div className="flex items-center gap-2 text-emerald-600">
                   <ScanQrCode className="h-5 w-5" />
@@ -33,25 +40,27 @@ const QRCodeSection = () => {
                 </div>
                 <div className="flex items-center gap-2 text-emerald-600">
                   <Gift className="h-5 w-5" />
-                  <span className="text-sm font-medium">Begini sinab ko'rish</span>
+                  <span className="text-sm font-medium">
+                    Begini sinab ko'rish
+                  </span>
                 </div>
               </div>
-              
+
               <Button className="bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-3 rounded-full text-lg font-semibold transition-all duration-300 hover:scale-105">
                 Boshlash
               </Button>
             </div>
-            
+
             <div className="flex-1 flex justify-center items-center">
               <motion.div
-                animate={{ 
+                animate={{
                   y: [0, -10, 0],
-                  rotate: [0, 2, -2, 0]
+                  rotate: [0, 2, -2, 0],
                 }}
-                transition={{ 
+                transition={{
                   duration: 4,
                   repeat: Infinity,
-                  ease: "easeInOut"
+                  ease: "easeInOut",
                 }}
                 className="relative"
               >
@@ -66,7 +75,7 @@ const QRCodeSection = () => {
                       <div className="h-2 bg-gray-200 rounded w-3/4"></div>
                     </div>
                   </div>
-                  
+
                   {/* Book Illustration */}
                   <div className="absolute -right-8 -bottom-4 bg-gradient-to-br from-blue-400 to-blue-600 rounded-lg p-4 shadow-xl transform -rotate-6">
                     <div className="bg-white rounded p-3">
@@ -119,14 +128,13 @@ const QRCodeSection = () => {
             <div className="text-orange-500 text-lg">👨‍🎓</div>
             <span className="text-orange-500 font-medium">O'quvchilar uchun</span>
           </div> */}
-          
+
           {/* <h3 className="text-4xl lg:text-5xl font-bold text-emerald-600 mb-8">
             Interaktiv Digital Ta'lim
           </h3> */}
         </motion.div>
 
         {/* VR Learning Cards Grid */}
-       
       </div>
     </section>
   );
