@@ -211,7 +211,7 @@ const Navigation = () => {
             transition={{ duration: 0.2 }}
           >
             <img
-              src="/images/meta-talim-logo.png"
+              src="/images/meta-talim-logo.svg"
               alt="Musavvir Edu Logo"
               className="h-40 w-40 object-contain"
             />
