@@ -1,18 +1,17 @@
-
-import React from 'react';
-import { motion } from 'framer-motion';
-import Navigation from '../components/sections/Navigation';
-import Hero from '../components/sections/Hero';
-import ForWhom from '../components/sections/ForWhom';
-import QRCodeSection from '../components/sections/QRCodeSection';
-import Features from '../components/sections/Features';
-import TabbedSection from '../components/sections/TabbedSection';
-import EducationalFeatures from '../components/sections/EducationalFeatures';
-import VRSection from '../components/sections/VRSection';
-import Testimonials from '../components/sections/Testimonials';
-import Stats from '../components/sections/Stats';
-import Newsletter from '../components/sections/Newsletter';
-import Footer from '../components/sections/Footer';
+import React from "react";
+import { motion } from "framer-motion";
+import Navigation from "../components/sections/Navigation";
+import Hero from "../components/sections/Hero";
+import ForWhom from "../components/sections/ForWhom";
+import QRCodeSection from "../components/sections/QRCodeSection";
+import Features from "../components/sections/Features";
+import TabbedSection from "../components/sections/TabbedSection";
+import EducationalFeatures from "../components/sections/EducationalFeatures";
+import VRSection from "../components/sections/VRSection";
+import Testimonials from "../components/sections/Testimonials";
+import Stats from "../components/sections/Stats";
+import Newsletter from "../components/sections/Newsletter";
+import Footer from "../components/sections/Footer";
 
 const Index = () => {
   return (

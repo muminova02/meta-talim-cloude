@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import {
   Search,
   ShoppingCart,
@@ -205,17 +206,19 @@ const Navigation = () => {
     >
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-16">
-          <motion.div
-            className="flex items-center"
-            whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.2 }}
-          >
-            <img
-              src="/images/meta-talim-logo.svg"
-              alt="Musavvir Edu Logo"
-              className="h-40 w-40 object-contain"
-            />
-          </motion.div>
+          <Link to="/">
+            <motion.div
+              className="flex items-center cursor-pointer"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.2 }}
+            >
+              <img
+                src="/images/meta-talim-logo.svg"
+                alt="Musavvir Edu Logo"
+                className="h-40 w-40 object-contain"
+              />
+            </motion.div>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-4 relative">

@@ -1,4 +1,4 @@
-# 📚 MetaTa'lim – Zamonaviy Interaktiv Ta'lim Platformasi
+# 📚 MusavvirEdu – Zamonaviy Interaktiv Ta'lim Platformasi
 
 MetaTa’lim – bu O‘zbekistonda ta’limni raqamlashtirish, jonlantirish va zamonaviylashtirishga qaratilgan innovatsion platforma. Loyihaning ilk MVP versiyasi hozircha **statik frontend** ko‘rinishida bo‘lib, tanlov (President Tech Award) uchun taqdim etilmoqda.
 
@@ -29,36 +29,37 @@ MetaTa’lim platformasi:
 
 ## 🛠 Texnologiyalar
 
-- **Frontend**: React.js, Vite, Tailwind CSS, Shadcn/UI  
-- **Routing**: React Router DOM  
-- **Versiyalash**: Git, GitHub  
+- **Frontend**: React.js, Vite, Tailwind CSS, Shadcn/UI
+- **Routing**: React Router DOM
+- **Versiyalash**: Git, GitHub
 - **Deploy (rejalashtirilgan)**: Vercel / Render / AWS
 
 ---
 
 ## 🧱 Rejalashtirilgan Arxitektura (Microservice)
 
-| Bo‘lim                     | Texnologiya                         |
-|---------------------------|-------------------------------------|
-| UI (Web & Mobile)         | React + Tailwind / React Native     |
-| Auth / Users              | Spring Boot / Keycloak              |
-| Content Management        | Node.js (NestJS)                    |
-| AI & Generator Service    | Python (FastAPI) + OpenAI API       |
-| Payment / Marketplace     | Go / Java Spring Boot               |
-| Storage (3D & Media)      | MinIO / S3                          |
-| Gateway & API Routing     | Nginx / API Gateway (Spring Cloud)  |
+| Bo‘lim                 | Texnologiya                        |
+| ---------------------- | ---------------------------------- |
+| UI (Web & Mobile)      | React + Tailwind / React Native    |
+| Auth / Users           | Spring Boot / Keycloak             |
+| Content Management     | Node.js (NestJS)                   |
+| AI & Generator Service | Python (FastAPI) + OpenAI API      |
+| Payment / Marketplace  | Go / Java Spring Boot              |
+| Storage (3D & Media)   | MinIO / S3                         |
+| Gateway & API Routing  | Nginx / API Gateway (Spring Cloud) |
 
 ---
 
 ## 📸 Ekran tasvirlari
 
 > Demo videolar, screenshots va UI sxemalari [shu papkada joylashgan](./docs/demo/)
-image [text](https://)
+> image [text](https://)
 
 ---
 
 ## 🔒 Kirish haqida
 
 Ushbu repository **private** bo‘lib, tanlov baholovchilari uchun quyidagi GitHub accountlarga yoki email’ga read access ochiladi:
+
 - `president-tech-review`
 - Yoki rasmiy hakamlar tomonidan ko‘rsatilgan email/username

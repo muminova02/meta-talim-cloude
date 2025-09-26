@@ -1,30 +1,34 @@
-
-import React, { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Quote } from 'lucide-react';
-import { Button } from '../ui/button';
+import React, { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import { Button } from "../ui/button";
 
 const Testimonials = () => {
   const testimonials = [
     {
       name: "Fotima Yusufbekova",
       role: "Yuqori Matematika o'qituvchisi",
-      content: "MetaTa'lim platformasi orqali o'quvchilarim matematik formulalarni 3D ko'rinishda ko'rib, chuqurroq tushunishmoqda. Bu ajoyib texnologiya!",
-      image: "https://static.vecteezy.com/system/resources/thumbnails/029/769/642/small/portrait-of-beautiful-muslim-female-student-online-learning-in-coffee-shop-young-woman-with-hijab-studies-with-laptop-in-cafe-girl-doing-her-homework-free-photo.jpeg"
+      content:
+        "MusavvirEdu platformasi orqali o'quvchilarim matematik formulalarni 3D ko'rinishda ko'rib, chuqurroq tushunishmoqda. Bu ajoyib texnologiya!",
+      image:
+        "https://static.vecteezy.com/system/resources/thumbnails/029/769/642/small/portrait-of-beautiful-muslim-female-student-online-learning-in-coffee-shop-young-woman-with-hijab-studies-with-laptop-in-cafe-girl-doing-her-homework-free-photo.jpeg",
     },
-    
+
     {
       name: "Akmal Rahmonov",
-      role: "Fizika o'qituvchisi", 
-      content: "AR texnologiyasi yordamida atom tuzilishini namoyish qilish o'quvchilar uchun juda qiziqarli va tushunarli. Natijalar ajoyib!",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face"
+      role: "Fizika o'qituvchisi",
+      content:
+        "AR texnologiyasi yordamida atom tuzilishini namoyish qilish o'quvchilar uchun juda qiziqarli va tushunarli. Natijalar ajoyib!",
+      image:
+        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
     },
     {
       name: "Malika Karimova",
       role: "Kimyo o'qituvchisi",
-      content: "VR muhitida kimyoviy reaksiyalarni ko'rsatish imkoniyati o'quvchilar uchun xavfsiz va samarali. Tavsiya qilaman!",
-      image: "/images/teacher2.jpg"
-    }
+      content:
+        "VR muhitida kimyoviy reaksiyalarni ko'rsatish imkoniyati o'quvchilar uchun xavfsiz va samarali. Tavsiya qilaman!",
+      image: "/images/teacher2.jpg",
+    },
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -34,9 +38,10 @@ const Testimonials = () => {
   };
 
   const prevTestimonial = () => {
-    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+    setCurrentIndex(
+      (prev) => (prev - 1 + testimonials.length) % testimonials.length
+    );
   };
-
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -44,7 +49,6 @@ const Testimonials = () => {
     }, 6000); // 5 soniyada bir o‘zgaradi
     return () => clearInterval(interval);
   }, [testimonials.length]);
-
 
   return (
     <section className="py-20 bg-gradient-to-br from-emerald-50 to-white">
@@ -60,7 +64,7 @@ const Testimonials = () => {
             Foydalanuvchi Fikrlari
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            O'qituvchilar va talabalar MetaTa'lim haqida nima deyishadi
+            O'qituvchilar va talabalar MusavvirEdu haqida nima deyishadi
           </p>
         </motion.div>
 
@@ -83,7 +87,7 @@ const Testimonials = () => {
                       className="w-24 h-24 rounded-full object-cover shadow-lg"
                     />
                   </div>
-                  
+
                   <div className="flex-1 text-center lg:text-left">
                     <Quote className="h-8 w-8 text-emerald-500 mb-4 mx-auto lg:mx-0" />
                     <p className="text-lg lg:text-xl text-gray-700 mb-6 leading-relaxed">
@@ -112,21 +116,21 @@ const Testimonials = () => {
               >
                 <ChevronLeft className="h-5 w-5" />
               </Button>
-              
+
               <div className="flex gap-2">
                 {testimonials.map((_, index) => (
                   <button
                     key={index}
                     onClick={() => setCurrentIndex(index)}
                     className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                      index === currentIndex 
-                        ? 'bg-emerald-500 w-8' 
-                        : 'bg-gray-300 hover:bg-gray-400'
+                      index === currentIndex
+                        ? "bg-emerald-500 w-8"
+                        : "bg-gray-300 hover:bg-gray-400"
                     }`}
                   />
                 ))}
               </div>
-              
+
               <Button
                 variant="outline"
                 size="lg"

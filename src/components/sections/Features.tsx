@@ -1,47 +1,48 @@
-
-import React from 'react';
-import { motion } from 'framer-motion';
-// 
-import { Box, Eye, Smartphone, BookOpen, Brain, Users } from 'lucide-react';      
+import React from "react";
+import { motion } from "framer-motion";
+//
+import { Box, Eye, Smartphone, BookOpen, Brain, Users } from "lucide-react";
 
 const Features = () => {
   const features = [
     {
       icon: Box,
       title: "3D Modellar",
-      description: "Interaktiv 3D obyektlar bilan o'rganish jarayonini boyiting",
-      color: "bg-gradient-to-br from-emerald-400 to-emerald-600"
+      description:
+        "Interaktiv 3D obyektlar bilan o'rganish jarayonini boyiting",
+      color: "bg-gradient-to-br from-emerald-400 to-emerald-600",
     },
     {
       icon: Eye,
       title: "AR Tajriba",
-      description: "Kengaytirilgan reallik orqali haqiqiy dunyo bilan ta'lim birlashtiring",
-      color: "bg-gradient-to-br from-blue-400 to-blue-600"
+      description:
+        "Kengaytirilgan reallik orqali haqiqiy dunyo bilan ta'lim birlashtiring",
+      color: "bg-gradient-to-br from-blue-400 to-blue-600",
     },
     {
       icon: Smartphone,
       title: "VR Muhiti",
       description: "Virtual reallik orqali to'liq immersiv ta'lim tajribasi",
-      color: "bg-gradient-to-br from-orange-400 to-orange-600"
+      color: "bg-gradient-to-br from-orange-400 to-orange-600",
     },
     {
       icon: BookOpen,
       title: "QR & Code",
       description: "QR kodlar va dasturlash orqali interaktiv kontentlar",
-      color: "bg-gradient-to-br from-purple-400 to-purple-600"
+      color: "bg-gradient-to-br from-purple-400 to-purple-600",
     },
     {
       icon: Brain,
       title: "AI Dars Reja",
       description: "Sun'iy intellekt yordamida individual dars rejalari",
-      color: "bg-gradient-to-br from-pink-400 to-pink-600"
+      color: "bg-gradient-to-br from-pink-400 to-pink-600",
     },
     {
       icon: Users,
       title: "Hamkorlik",
       description: "Jamoaviy ishlash va bilim almashish imkoniyatlari",
-      color: "bg-gradient-to-br from-teal-400 to-teal-600"
-    }
+      color: "bg-gradient-to-br from-teal-400 to-teal-600",
+    },
   ];
 
   return (
@@ -55,7 +56,7 @@ const Features = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl lg:text-5xl font-bold mb-6 text-gray-800">
-            MetaTa'lim Imkoniyatlari
+            MusavvirEdu Imkoniyatlari
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
             Zamonaviy texnologiyalar bilan ta'limni yangi bosqichga olib chiqing
@@ -70,9 +71,9 @@ const Features = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
-              whileHover={{ 
+              whileHover={{
                 y: -10,
-                transition: { duration: 0.3 }
+                transition: { duration: 0.3 },
               }}
               className="group"
             >
@@ -84,11 +85,11 @@ const Features = () => {
                 >
                   <feature.icon className="h-8 w-8 text-white" />
                 </motion.div>
-                
+
                 <h3 className="text-xl font-bold mb-4 text-gray-800">
                   {feature.title}
                 </h3>
-                
+
                 <p className="text-gray-600 leading-relaxed">
                   {feature.description}
                 </p>

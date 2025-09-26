@@ -5,9 +5,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SearchIcon } from "lucide-react";
-import dLearn from "../../../dist/images/ar learn.png";
-import vr1 from "../../../dist/images/vr1.png";
-import vr2 from "../../../dist/images/EFFORT (1).png";
+import { Link } from "react-router-dom";
+import dLearn from "../../../dist/assets/ar learn.png";
+import vr1 from "../../../dist/assets/vr1.png";
+import vr2 from "../../../dist/assets/EFFORT (1).png";
 
 interface CarouselSlide {
   id: number;
@@ -55,6 +56,34 @@ const slides: CarouselSlide[] = [
 const HeroCarousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [imagesLoaded, setImagesLoaded] = useState(false);
+
+  // Preload images for better performance
+  useEffect(() => {
+    const preloadImages = () => {
+      const imageUrls = [dLearn, vr1, vr2, "/images/hero_back.png"];
+
+      const imagePromises = imageUrls.map((url) => {
+        return new Promise((resolve, reject) => {
+          const img = new Image();
+          img.onload = resolve;
+          img.onerror = reject;
+          img.src = url;
+        });
+      });
+
+      Promise.all(imagePromises)
+        .then(() => {
+          setImagesLoaded(true);
+        })
+        .catch((error) => {
+          console.warn("Some images failed to load:", error);
+          setImagesLoaded(true); // Continue even if some images fail
+        });
+    };
+
+    preloadImages();
+  }, []);
 
   useEffect(() => {
     if (!isAutoPlaying) return;
@@ -142,6 +171,8 @@ const HeroCarousel = () => {
               src={vr1}
               alt="VR Elements"
               className="w-full h-full object-contain lg:object-cover rounded-lg"
+              loading="eager"
+              decoding="async"
             />
           </div>
         );
@@ -152,6 +183,8 @@ const HeroCarousel = () => {
               src={dLearn}
               alt="3D Learning"
               className="w-full h-full object-contain lg:object-cover rounded-lg"
+              loading="eager"
+              decoding="async"
             />
           </div>
         );
@@ -166,6 +199,8 @@ const HeroCarousel = () => {
                   src={vr2}
                   alt="3D Animatsiya"
                   className="w-full h-full object-contain"
+                  loading="eager"
+                  decoding="async"
                 />
               </div>
 
@@ -205,13 +240,15 @@ const HeroCarousel = () => {
                 </div>
 
                 {/* Ko'proq tugmasi */}
-                <Button
-                  size="lg"
-                  className="bg-emerald-500 hover:bg-emerald-600 text-white px-4 lg:px-6 py-2 rounded-full text-xs lg:text-sm font-medium shadow-lg flex items-center gap-2"
-                >
-                  Ko'proq...
-                  <SearchIcon className="h-4 w-4" />
-                </Button>
+                <Link to="/products">
+                  <Button
+                    size="lg"
+                    className="bg-emerald-500 hover:bg-emerald-600 text-white px-4 lg:px-6 py-2 rounded-full text-xs lg:text-sm font-medium shadow-lg flex items-center gap-2"
+                  >
+                    Ko'proq...
+                    <SearchIcon className="h-4 w-4" />
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>
@@ -293,44 +330,46 @@ const HeroCarousel = () => {
                 {slides[currentSlide].description}
               </motion.p>
               <motion.div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <Button
-                  size="lg"
-                  className="bg-emerald-500 hover:bg-emerald-600 text-white px-4 lg:px-5 py-4 lg:py-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl text-sm lg:text-base"
-                >
-                  {slides[currentSlide].buttonText}
-                  {slides[currentSlide].buttonText === "Ko'proq..." ? (
-                    <SearchIcon className="ml-2 h-5 w-5" />
-                  ) : (
-                    <svg
-                      style={{
-                        width: "30px",
-                        height: "35px",
-                        flexShrink: "0",
-                        aspectRatio: "1/1",
-                        marginLeft: "3px",
-                        marginTop: "3px",
-                      }}
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 50 50"
-                      fill="none"
-                    >
-                      <path
-                        d="M23.2375 3L39.475 12.375V28.7188C39.475 29.4501 39.2824 30.1686 38.9167 30.802C38.551 31.4354 38.0251 31.9614 37.3917 32.3271L25.3208 39.2979C24.6874 39.6636 23.9689 39.8561 23.2375 39.8561C22.5061 39.8561 21.7876 39.6636 21.1542 39.2979L9.08333 32.3271C8.44994 31.9614 7.92395 31.4354 7.55825 30.802C7.19255 30.1686 7.00002 29.4501 7 28.7188V12.375L23.2375 3Z"
-                        stroke="white"
-                        strokeWidth="3"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                      <path
-                        d="M23.2376 11.3334V21.75M23.2376 21.75L14.2168 26.9584M23.2376 21.75L32.2585 26.9584"
-                        stroke="white"
-                        strokeWidth="3"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  )}
-                </Button>
+                <Link to="/products">
+                  <Button
+                    size="lg"
+                    className="bg-emerald-500 hover:bg-emerald-600 text-white px-4 lg:px-5 py-4 lg:py-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl text-sm lg:text-base"
+                  >
+                    {slides[currentSlide].buttonText}
+                    {slides[currentSlide].buttonText === "Ko'proq..." ? (
+                      <SearchIcon className="ml-2 h-5 w-5" />
+                    ) : (
+                      <svg
+                        style={{
+                          width: "30px",
+                          height: "35px",
+                          flexShrink: "0",
+                          aspectRatio: "1/1",
+                          marginLeft: "3px",
+                          marginTop: "3px",
+                        }}
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 50 50"
+                        fill="none"
+                      >
+                        <path
+                          d="M23.2375 3L39.475 12.375V28.7188C39.475 29.4501 39.2824 30.1686 38.9167 30.802C38.551 31.4354 38.0251 31.9614 37.3917 32.3271L25.3208 39.2979C24.6874 39.6636 23.9689 39.8561 23.2375 39.8561C22.5061 39.8561 21.7876 39.6636 21.1542 39.2979L9.08333 32.3271C8.44994 31.9614 7.92395 31.4354 7.55825 30.802C7.19255 30.1686 7.00002 29.4501 7 28.7188V12.375L23.2375 3Z"
+                          stroke="white"
+                          strokeWidth="3"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                        <path
+                          d="M23.2376 11.3334V21.75M23.2376 21.75L14.2168 26.9584M23.2376 21.75L32.2585 26.9584"
+                          stroke="white"
+                          strokeWidth="3"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    )}
+                  </Button>
+                </Link>
               </motion.div>
             </motion.div>
 
