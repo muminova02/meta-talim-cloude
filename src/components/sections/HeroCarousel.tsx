@@ -6,9 +6,9 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SearchIcon } from "lucide-react";
 import { Link } from "react-router-dom";
-import dLearn from "../../../dist/images/ar learn.png";
-import vr1 from "../../../dist/images/vr1.png";
-import vr2 from "../../../dist/images/EFFORT (1).png";
+import dLearn from "../../../dist/assets/ar learn.png";
+import vr1 from "../../../dist/assets/vr1.png";
+import vr2 from "../../../dist/assets/EFFORT (1).png";
 
 interface CarouselSlide {
   id: number;

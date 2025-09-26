@@ -1,9 +1,9 @@
 import React from "react";
 import { motion } from "framer-motion";
-import cambridgeLogo from "../../../dist/images/9b00521e8faa0dd379e56acc8fb5fe2f82ddcc2a.png";
-import DavUni from "../../../dist/images/a073130993b0163d18714d0e66e77ae0e899b995.png";
-import mitUni from "../../../dist/images/d5be4c2b5036e2ab856ffae6a87b01b09343d46b.png";
-import harvardUni from "../../../dist/images/dd627cd8adf9a621279af04eb1c041c00e13bcfb.png";
+import cambridgeLogo from "../../../dist/assets/9b00521e8faa0dd379e56acc8fb5fe2f82ddcc2a.png";
+import DavUni from "../../../dist/assets/a073130993b0163d18714d0e66e77ae0e899b995.png";
+import mitUni from "../../../dist/assets/d5be4c2b5036e2ab856ffae6a87b01b09343d46b.png";
+import harvardUni from "../../../dist/assets/dd627cd8adf9a621279af04eb1c041c00e13bcfb.png";
 const VRSection: React.FC = () => {
   return (
     <section className="py-16 bg-gradient-to-br from-blue-50 to-cyan-100 relative overflow-hidden">
