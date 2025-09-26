@@ -1,7 +1,6 @@
-
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Users, BookOpen, Award, Globe } from 'lucide-react';
+import React from "react";
+import { motion } from "framer-motion";
+import { Users, BookOpen, Award, Globe } from "lucide-react";
 
 const Stats = () => {
   const stats = [
@@ -9,26 +8,26 @@ const Stats = () => {
       icon: Users,
       number: "10,000+",
       label: "Faol foydalanuvchilar",
-      color: "text-emerald-600"
+      color: "text-emerald-600",
     },
     {
       icon: BookOpen,
       number: "500+",
       label: "Ta'lim materiallari",
-      color: "text-blue-600"
+      color: "text-blue-600",
     },
     {
       icon: Award,
       number: "50+",
       label: "Ta'lim muassasalari",
-      color: "text-orange-600"
+      color: "text-orange-600",
     },
     {
       icon: Globe,
       number: "25+",
       label: "Shahar va viloyatlar",
-      color: "text-purple-600"
-    }
+      color: "text-purple-600",
+    },
   ];
 
   return (
@@ -45,7 +44,8 @@ const Stats = () => {
             Bizning Natijalarimiz
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            MetaTa'lim platformasi O'zbekiston bo'ylab muvaffaqiyatli faoliyat yuritmoqda
+            MusavvirEdu platformasi O'zbekiston bo'ylab muvaffaqiyatli faoliyat
+            yuritmoqda
           </p>
         </motion.div>
 
@@ -57,9 +57,9 @@ const Stats = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
-              whileHover={{ 
+              whileHover={{
                 y: -10,
-                transition: { duration: 0.3 }
+                transition: { duration: 0.3 },
               }}
               className="text-center group"
             >
@@ -71,7 +71,7 @@ const Stats = () => {
                 >
                   <stat.icon className="h-12 w-12 mx-auto" />
                 </motion.div>
-                
+
                 <motion.h3
                   initial={{ scale: 1 }}
                   whileInView={{ scale: [1, 1.1, 1] }}
@@ -81,10 +81,8 @@ const Stats = () => {
                 >
                   {stat.number}
                 </motion.h3>
-                
-                <p className="text-gray-600 font-medium">
-                  {stat.label}
-                </p>
+
+                <p className="text-gray-600 font-medium">{stat.label}</p>
               </div>
             </motion.div>
           ))}
@@ -100,7 +98,9 @@ const Stats = () => {
         >
           <div className="inline-flex items-center gap-4 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white px-8 py-4 rounded-full shadow-lg">
             <Award className="h-6 w-6" />
-            <span className="font-semibold">O'zbekiston Ta'lim Vazirligi tomonidan tasdiqlangan</span>
+            <span className="font-semibold">
+              O'zbekiston Ta'lim Vazirligi tomonidan tasdiqlangan
+            </span>
           </div>
         </motion.div>
       </div>

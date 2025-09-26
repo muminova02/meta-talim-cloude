@@ -1,34 +1,45 @@
-
-import React from 'react';
-import { motion } from 'framer-motion';
-import { GraduationCap, Users, Building2 } from 'lucide-react';
-import FeatureCard from '../ui/FeatureCard';
+import React from "react";
+import { motion } from "framer-motion";
+import { GraduationCap, Users, Building2 } from "lucide-react";
+import FeatureCard from "../ui/FeatureCard";
 
 const ForWhom = () => {
   const cards: {
     icon: React.ElementType;
     title: string;
     description: string;
-    color: 'emerald' | 'blue' | 'orange' | 'green' | 'teal' | 'cyan' | 'purple' | 'indigo' | 'pink' | 'yellow' | 'red';
+    color:
+      | "emerald"
+      | "blue"
+      | "orange"
+      | "green"
+      | "teal"
+      | "cyan"
+      | "purple"
+      | "indigo"
+      | "pink"
+      | "yellow"
+      | "red";
   }[] = [
     {
       icon: GraduationCap,
       title: "O'quvchilar",
       description: "Interaktiv 3D va AR tajribalar orqali chuqurroq o'rganing",
-      color: "emerald"
+      color: "emerald",
     },
     {
       icon: Users,
-      title: "O'qituvchilar", 
+      title: "O'qituvchilar",
       description: "Zamonaviy texnologiyalar bilan darslaringizni boyiting",
-      color: "blue"
+      color: "blue",
     },
     {
       icon: Building2,
       title: "Tashkilotlar",
-      description: "Ta'lim sifatini oshiring va innovatsion yondashuvlarni joriy etish",
-      color: "orange"
-    }
+      description:
+        "Ta'lim sifatini oshiring va innovatsion yondashuvlarni joriy etish",
+      color: "orange",
+    },
   ];
 
   const containerVariants = {
@@ -36,9 +47,9 @@ const ForWhom = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2
-      }
-    }
+        staggerChildren: 0.2,
+      },
+    },
   };
 
   return (
@@ -55,7 +66,8 @@ const ForWhom = () => {
             Kim uchun mo'ljallangan?
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            MetaTa'lim platformasi barcha ta'lim ishtirokchilari uchun yaratilgan
+            MusavvirEdu platformasi barcha ta'lim ishtirokchilari uchun
+            yaratilgan
           </p>
         </motion.div>
 

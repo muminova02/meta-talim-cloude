@@ -1,19 +1,18 @@
-
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, ArrowRight } from 'lucide-react';
-import { Button } from '../ui/button';
-import { Input } from '../ui/input';
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Mail, ArrowRight } from "lucide-react";
+import { Button } from "../ui/button";
+import { Input } from "../ui/input";
 
 const Newsletter = () => {
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("");
   const [isSubscribed, setIsSubscribed] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (email) {
       setIsSubscribed(true);
-      setEmail('');
+      setEmail("");
       setTimeout(() => setIsSubscribed(false), 3000);
     }
   };
@@ -41,9 +40,10 @@ const Newsletter = () => {
           <h2 className="text-3xl lg:text-5xl font-bold mb-6 text-white">
             Yangiliklar va Maslahatlar
           </h2>
-          
+
           <p className="text-lg lg:text-xl text-emerald-100 mb-8 max-w-2xl mx-auto">
-            MetaTa'lim platformasidagi eng so'nggi yangiliklar va ta'lim bo'yicha foydali maslahatlarni birinchi bo'lib oling
+            MusavvirEdu platformasidagi eng so'nggi yangiliklar va ta'lim
+            bo'yicha foydali maslahatlarni birinchi bo'lib oling
           </p>
 
           <motion.form
@@ -62,7 +62,7 @@ const Newsletter = () => {
               className="flex-1 bg-white border-0 h-12 text-gray-800 placeholder:text-gray-500"
               required
             />
-            
+
             <Button
               type="submit"
               className="bg-white text-emerald-600 hover:bg-gray-100 h-12 px-8 font-semibold transition-all duration-300 transform hover:scale-105"
