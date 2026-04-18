@@ -55,7 +55,7 @@ const Footer = () => {
               <h3 className="text-xl font-bold text-gray-800">Musavvir Edu</h3>
             </div>
             <p className="text-gray-600 mb-6 text-sm leading-relaxed">
-              CEO/Founder: Muqaddas
+              CMO/TEAMS: Feruza
             </p>
 
             <p className="text-gray-500 text-sm mb-6">
@@ -167,7 +167,7 @@ const Footer = () => {
 
             <div className="flex items-center gap-2">
               <Mail className="h-4 w-4 text-emerald-500" />
-              <span>muminova.2m@gmail.com</span>
+              <span>nizomiddinova.@gmail.com</span>
             </div>
 
             <div className="flex items-center gap-2">
