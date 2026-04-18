@@ -59,11 +59,11 @@ const Footer = () => {
             </p>
 
             <p className="text-gray-500 text-sm mb-6">
-              Copyright © 2025 Musavvir Edu
+              Copyright © 2026 Musavvir Edu
             </p>
 
             <p className="text-gray-500 text-xs">
-              Autorlik huquqlari ega. 2025 Fevral
+              Autorlik huquqlari ega. 2026 Fevral
             </p>
           </motion.div>
 
