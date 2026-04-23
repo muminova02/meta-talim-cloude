@@ -11,6 +11,7 @@ import {
   X,
   Globe,
   ChevronDown,
+  Box,
 } from "lucide-react";
 import { Button } from "../ui/button";
 import MegaDropdown2 from "../ui/MegaDropdown2";
@@ -312,6 +313,16 @@ const Navigation = () => {
 
           {/* Desktop Actions */}
           <div className="hidden lg:flex items-center space-x-4">
+            <Link to="/product-process">
+              <Button
+                variant="ghost"
+                size="sm"
+                className="text-white hover:bg-emerald-600"
+              >
+                <Box className="h-4 w-4" />
+                <span className="ml-1">Product Process</span>
+              </Button>
+            </Link>
             <Button
               variant="ghost"
               size="sm"
@@ -479,6 +490,16 @@ const Navigation = () => {
               ))}
 
               <div className="flex items-center space-x-4 pt-4 border-t border-emerald-400">
+                <Link to="/product-process">
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="text-white hover:bg-emerald-600"
+                  >
+                    <Box className="h-4 w-4" />
+                    <span className="ml-1">Product Process</span>
+                  </Button>
+                </Link>
                 <Button
                   variant="ghost"
                   size="sm"

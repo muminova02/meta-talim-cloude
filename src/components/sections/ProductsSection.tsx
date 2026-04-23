@@ -1,5 +1,5 @@
 // Main Products section component with sidebar and improved layout
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Search,
@@ -18,8 +18,11 @@ import {
   ChevronUp,
   Filter,
 } from "lucide-react";
-import { products } from "../../data/products";
 import { useProducts } from "../../hooks/useProducts";
+import { useProductsQuery } from "@/hooks/useProductsQuery";
+import type { Product } from "@/types";
+import type { ProductDto } from "@/api/productApi";
+import { resolveApiUrl } from "@/api/http";
 import ProductCard from "../ui/ProductCard";
 import ProductFilters from "./tabs/ProductFilters";
 import ProductButton from "../ui/ProductButton";
@@ -29,6 +32,26 @@ const ProductsSection: React.FC = () => {
   const [selectedSubjects, setSelectedSubjects] = useState<string[]>([]);
   const [isContentExpanded, setIsContentExpanded] = useState(true);
   const [isSubjectExpanded, setIsSubjectExpanded] = useState(true);
+
+  const { data, isLoading, error } = useProductsQuery();
+
+  const mappedProducts: Product[] = useMemo(() => {
+    if (!data) return [];
+    return data.map((dto: ProductDto): Product => ({
+      id: String(dto.id),
+      title: dto.title,
+      description: dto.description,
+      category: dto.category,
+      image: dto.thumbnail ? resolveApiUrl(dto.thumbnail) : "/images/solar-system.jpg",
+      views: dto.views ?? 0,
+      likes: dto.likes ?? 0,
+      badge: undefined,
+      price: 0,
+      duration: `${Math.round(dto.duration / 60)} min`,
+      language: dto.language ?? "UZB",
+      createdAt: dto.created_at,
+    }));
+  }, [data]);
 
   const {
     products: paginatedProducts,
@@ -42,7 +65,7 @@ const ProductsSection: React.FC = () => {
     hasMore,
     loadMore,
     totalProducts,
-  } = useProducts({ products });
+  } = useProducts({ products: mappedProducts });
 
   // Content type categories (3D, VR, AR, etc.)
   const contentCategories = [
@@ -296,6 +319,18 @@ const ProductsSection: React.FC = () => {
                 ))}
               </div>
             </div>
+
+            {/* Loading / Error states */}
+            {isLoading && (
+              <div className="text-center text-gray-600 py-10">
+                Mahsulotlar yuklanmoqda...
+              </div>
+            )}
+            {error && !isLoading && (
+              <div className="text-center text-red-600 py-10">
+                Mahsulotlarni yuklashda xatolik: {error.message}
+              </div>
+            )}
 
             {/* Category Sections */}
             <div className="space-y-8">
