@@ -10,7 +10,7 @@ import {
   MessageCircle,
 } from "lucide-react";
 import { ProductDetail } from "@/types";
-import { Button } from "./Button";
+import { Button } from "./button";
 
 interface ProductActionsProps {
   product: ProductDetail;
