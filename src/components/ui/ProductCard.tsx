@@ -1,21 +1,18 @@
 // Individual product card component with improved styling matching the design
 import React from "react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import {
   Eye,
   ThumbsUp,
-  Globe,
-  Camera,
-  MoreVertical,
   Languages,
   Video,
-  FlaskConical,
   Box,
   Presentation,
 } from "lucide-react";
 import { Product } from "../../types";
 import { formatCurrency } from "../../lib/utils";
-import Badge from "./badge";
+import { Badge } from "./badge";
 
 interface ProductCardProps {
   product: Product;
@@ -23,13 +20,20 @@ interface ProductCardProps {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product, index }) => {
+  const navigate = useNavigate();
+
+  const handleCardClick = () => {
+    navigate(`/products/${product.id}`);
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.1 }}
       whileHover={{ scale: 1.03 }}
-      className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+      onClick={handleCardClick}
+      className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer"
     >
       {/* Image Container */}
       <div className="relative">
@@ -196,9 +200,6 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, index }) => {
               <Presentation className="w-4 h-4" />
             </div>
           </div>
-          <button className="p-1 hover:bg-white/10 rounded-full transition-colors">
-            <MoreVertical className="w-4 h-4 text-white" />
-          </button>
         </div>
       </div>
 

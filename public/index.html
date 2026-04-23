@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="uz">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Qara Meta Ta'lim Platformasi"
+    />
+    <title>Qara Meta Ta'lim</title>
+    
+    <!-- Permissions Policy for Device Sensors - Allow for 3D content only -->
+    <meta http-equiv="Permissions-Policy" content="accelerometer=(self), gyroscope=(self), magnetometer=(self), camera=(self), microphone=(self), usb=(), bluetooth=(), serial=(), hid=(), payment=(), publickey-credentials-get=(), screen-wake-lock=(), xr-spatial-tracking=(self)" />
+    
+    <!-- Feature Policy (legacy) -->
+    <meta http-equiv="Feature-Policy" content="accelerometer 'self'; gyroscope 'self'; magnetometer 'self'; camera 'self'; microphone 'self'; usb 'none'; bluetooth 'none'; serial 'none'; hid 'none'; payment 'none'; publickey-credentials-get 'none'; screen-wake-lock 'none'; xr-spatial-tracking 'self'" />
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Viewer for 3D Models -->
+    <script>
+      // Suppress permission policy violations for device sensors
+      const originalConsoleError = console.error;
+      console.error = function(...args) {
+        const message = args[0];
+        if (typeof message === 'string' && 
+            (message.includes('Permissions policy violation') || 
+             message.includes('deviceorientation events are blocked'))) {
+          // Suppress these specific permission errors
+          return;
+        }
+        originalConsoleError.apply(console, args);
+      };
+
+      // Check if model-viewer is already loaded
+      if (!customElements.get('model-viewer')) {
+        // Load the main script
+        const script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/npm/@google/model-viewer@3.4.0/dist/model-viewer.min.js';
+        script.onload = function() {
+          console.log('Google Viewer loaded successfully');
+        };
+        script.onerror = function() {
+          console.error('Failed to load Google Viewer');
+        };
+        document.head.appendChild(script);
+        
+        // Load legacy script as fallback
+        const legacyScript = document.createElement('script');
+        legacyScript.src = 'https://cdn.jsdelivr.net/npm/@google/model-viewer@3.4.0/dist/model-viewer-legacy.js';
+        legacyScript.nomodule = true;
+        document.head.appendChild(legacyScript);
+      }
+    </script>
+    
+    <!-- Alternative CDN sources -->
+    <script src="https://unpkg.com/@google/model-viewer@3.4.0/dist/model-viewer.min.js"></script>
+    <script nomodule src="https://unpkg.com/@google/model-viewer@3.4.0/dist/model-viewer-legacy.js"></script>
+    
+    <style>
+      model-viewer {
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+        border-radius: 8px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      }
+      
+      .planet-button {
+        transition: all 0.3s ease;
+        border: 1px solid transparent;
+      }
+      
+      .planet-button:hover {
+        transform: scale(1.05);
+        border-color: rgba(255, 255, 255, 0.2);
+      }
+      
+      .planet-button.selected {
+        background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+        box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+        border-color: #60a5fa;
+      }
+      
+      /* Google Viewer custom styles */
+      model-viewer::part(default-progress-bar) {
+        height: 4px;
+        background-color: #3b82f6;
+        border-radius: 2px;
+      }
+      
+      model-viewer::part(default-progress-mask) {
+        background-color: rgba(59, 130, 246, 0.2);
+      }
+      
+      .ar-button {
+        background-color: #3b82f6;
+        border-radius: 4px;
+        color: white;
+        padding: 8px 16px;
+        border: none;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      
+      .ar-button:hover {
+        background-color: #1d4ed8;
+      }
+      
+      /* Loading animation */
+      .loading-spinner {
+        animation: spin 1s linear infinite;
+      }
+      
+      @keyframes spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+      
+      /* Smooth transitions */
+      * {
+        transition: all 0.2s ease;
+      }
+      
+      /* Loading overlay styles */
+      .loading-overlay {
+        transition: opacity 0.5s ease-in-out;
+        backdrop-filter: blur(10px);
+      }
+      
+      .loading-overlay.fade-out {
+        opacity: 0;
+      }
+      
+      /* Planet button animations */
+      .planet-button {
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .planet-button::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        transition: left 0.5s ease;
+      }
+      
+      .planet-button:hover::before {
+        left: 100%;
+      }
+      
+      /* Model viewer enhancements */
+      model-viewer {
+        transition: all 0.3s ease;
+      }
+      
+      model-viewer:focus {
+        outline: 2px solid #3b82f6;
+        outline-offset: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+  </body>
+</html> 

@@ -1,26 +1,40 @@
-// Reusable Badge component for product cards
-import React from 'react';
-import { cn } from '../../lib/utils';
+import * as React from "react";
+import { cva, type VariantProps } from "class-variance-authority";
+import { cn } from "@/lib/utils";
 
-interface BadgeProps {
-  variant: 'Pro' | 'Free' | 'New';
-  className?: string;
+const badgeVariants = cva(
+  "inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
+  {
+    variants: {
+      variant: {
+        default:
+          "border-transparent bg-primary text-primary-foreground hover:bg-primary/80",
+        secondary:
+          "border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80",
+        destructive:
+          "border-transparent bg-destructive text-destructive-foreground hover:bg-destructive/80",
+        outline: "text-foreground",
+        success:
+          "border-transparent bg-emerald-100 text-emerald-800 hover:bg-emerald-200",
+        warning:
+          "border-transparent bg-yellow-100 text-yellow-800 hover:bg-yellow-200",
+        info: "border-transparent bg-blue-100 text-blue-800 hover:bg-blue-200",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+    },
+  }
+);
+
+export interface BadgeProps
+  extends React.HTMLAttributes<HTMLDivElement>,
+    VariantProps<typeof badgeVariants> {}
+
+function Badge({ className, variant, ...props }: BadgeProps) {
+  return (
+    <div className={cn(badgeVariants({ variant }), className)} {...props} />
+  );
 }
 
-const Badge: React.FC<BadgeProps> = ({ variant, className }) => {
-  const baseClasses = 'absolute top-3 right-3 px-2 py-1 rounded-full text-xs font-semibold';
-  
-  const variantClasses = {
-    Pro: 'bg-yellow-500 text-white',
-    New: 'bg-green-500 text-white',
-    Free: 'bg-blue-500 text-white'
-  };
-
-  return (
-    <div className={cn(baseClasses, variantClasses[variant], className)}>
-      {variant}
-    </div>
-  );
-};
-
-export default Badge;
+export { Badge, badgeVariants };

@@ -95,3 +95,55 @@ export function truncateText(text: string, maxLength: number): string {
   if (text.length <= maxLength) return text;
   return text.slice(0, maxLength) + '...';
 }
+
+// Format date to YYYY.MM.DD format
+export function formatDate(dateString: string): string {
+  const date = new Date(dateString);
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  return `${year}.${month}.${day}`;
+}
+
+// Clamp text to specified number of lines
+export function clampText(text: string, maxLines: number = 3): string {
+  const words = text.split(' ');
+  const wordsPerLine = Math.ceil(words.length / maxLines);
+  const clampedWords = words.slice(0, wordsPerLine * maxLines);
+  return clampedWords.join(' ');
+}
+
+// Generate a simple QR code placeholder (for demo purposes)
+export function generateQRCode(data: string): string {
+  // In a real implementation, you would use a QR code library
+  // For now, return a placeholder
+  return `data:image/svg+xml;base64,${btoa(`
+    <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+      <rect width="200" height="200" fill="white"/>
+      <text x="100" y="100" text-anchor="middle" font-family="monospace" font-size="12">QR Code</text>
+      <text x="100" y="120" text-anchor="middle" font-family="monospace" font-size="8">${data}</text>
+    </svg>
+  `)}`;
+}
+
+// Copy text to clipboard
+export async function copyToClipboard(text: string): Promise<boolean> {
+  try {
+    await navigator.clipboard.writeText(text);
+    return true;
+  } catch (err) {
+    // Fallback for older browsers
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    document.body.appendChild(textArea);
+    textArea.select();
+    try {
+      document.execCommand('copy');
+      document.body.removeChild(textArea);
+      return true;
+    } catch (fallbackErr) {
+      document.body.removeChild(textArea);
+      return false;
+    }
+  }
+}

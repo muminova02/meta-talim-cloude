@@ -6,10 +6,31 @@
     <title>MusavvirEdu - 3D, AR va VR Ta'lim Platformasi</title>
     <meta name="description" content="MusavvirEdu - Kengaytirilgan reallik va 3D texnologiyalar bilan ta'limni kelajakka olib boruvchi platforma." />
     <link rel="icon" type="image/png" href="public/images/logo.png" />
+    
+    <!-- Permissions Policy for Device Sensors - Allow for 3D content only -->
+    <meta http-equiv="Permissions-Policy" content="accelerometer=(self), gyroscope=(self), magnetometer=(self), camera=(self), microphone=(self), usb=(), bluetooth=(), serial=(), hid=(), payment=(), publickey-credentials-get=(), screen-wake-lock=(), xr-spatial-tracking=(self)" />
+    
+    <!-- Feature Policy (legacy) -->
+    <meta http-equiv="Feature-Policy" content="accelerometer 'self'; gyroscope 'self'; magnetometer 'self'; camera 'self'; microphone 'self'; usb 'none'; bluetooth 'none'; serial 'none'; hid 'none'; payment 'none'; publickey-credentials-get 'none'; screen-wake-lock 'none'; xr-spatial-tracking 'self'" />
   </head>
 
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- Suppress permission policy violations for device sensors -->
+    <script>
+      const originalConsoleError = console.error;
+      console.error = function(...args) {
+        const message = args[0];
+        if (typeof message === 'string' && 
+            (message.includes('Permissions policy violation') || 
+             message.includes('deviceorientation events are blocked'))) {
+          // Suppress these specific permission errors
+          return;
+        }
+        originalConsoleError.apply(console, args);
+      };
+    </script>
   </body>
 </html>
